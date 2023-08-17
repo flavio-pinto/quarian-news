@@ -1,18 +1,32 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/js/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/bundle.js',
+    path: path.resolve(__dirname, 'dist/js'),
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/fonts/',
+          },
+        },
+        include: path.resolve(__dirname, 'src/assets/fonts'),
+        exclude: /node_modules/,
       },
     ],
   },
@@ -28,6 +42,14 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/template.html', 
+      title: 'Quarian.news',
+      inject: 'body',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'assets/css/style.css',
+    })
   ],
 };
