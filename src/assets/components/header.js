@@ -54,12 +54,12 @@ for (const link of socialLinks) {
   anchor.href = link.url;
 
   const icon = document.createElement('i');
-  icon.classList.add('bi', `bi-${link.icon}`, 'me-3', 'me-lg-0');
+  icon.classList.add('bi', `bi-${link.icon}`, 'me-2', 'me-lg-0', 'align-middle');
   anchor.appendChild(icon);
 
   // Create text for hamburger menu
   const textSpan = document.createElement('span');
-  textSpan.classList.add('d-lg-none', 'ms-2');
+  textSpan.classList.add('d-lg-none', 'ms-2', 'fs-4', 'align-middle');
   textSpan.textContent = link.text;
   anchor.appendChild(textSpan);
 
