@@ -68,10 +68,71 @@ function createMainSection() {
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = 'Catching Up with the Tech World!';
-  titleElement.classList.add('h2', 'fw-bold', 'fst-italic', 'text-center', 'text-danger');
+  titleElement.classList.add('h2', 'fw-bold', 'fst-italic', 'text-center', 'text-danger', 'mb-5');
 
   mainElement.appendChild(titleElement);
 
   const header = document.querySelector('header');
   document.body.insertBefore(mainElement, header.nextSibling);
+}
+
+//funzione per generare le cards
+function createNewsCards(newsArray) {
+  const container = document.createElement('div');
+  container.classList.add('container', 'mt-4');
+
+  const row = document.createElement('div');
+  row.classList.add('row', 'row-cols-1', 'row-cols-md-2', 'g-4');
+
+  newsArray.forEach(news => {
+    const col = document.createElement('div');
+    col.classList.add('col');
+
+    const card = document.createElement('div');
+    card.classList.add('card', 'h-100', 'bg-secondary', 'p-3');
+
+    const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body', 'd-flex', 'flex-column', 'justify-content-between', 'p-2');
+
+    const cardTitle = document.createElement('h3');
+    cardTitle.classList.add('card-title', 'text-danger-emphasis', 'fw-bold', 'mb-3');
+    cardTitle.textContent = news.title;
+
+    const cardFooter = document.createElement('div');
+    cardFooter.classList.add('card-footer', 'bg-transparent', 'border-0', 'text-start', 'text-danger-emphasis', 'fw-bold', 'd-flex', 'align-items-center', 'justify-content-between', 'p-2');
+
+    const cardDetails = document.createElement('div');
+    cardDetails.classList.add('d-flex', 'flex-column', 'gap-1');
+
+    const cardAuthor = document.createElement('p');
+    cardAuthor.classList.add('m-0');
+    cardAuthor.textContent = `Autore: ${news.by}`;
+
+    const cardDate = document.createElement('p');
+    cardDate.classList.add('m-0');
+    cardDate.textContent = `Data: ${news.time}`;
+
+    const cardLink = document.createElement('a');
+    cardLink.classList.add('btn', 'btn-danger');
+    cardLink.href = news.url;
+    cardLink.textContent = 'Read more';
+
+    cardDetails.appendChild(cardAuthor);
+    cardDetails.appendChild(cardDate);
+
+    cardFooter.appendChild(cardDetails);
+    cardFooter.appendChild(cardLink);
+
+    cardBody.appendChild(cardTitle);
+    card.appendChild(cardBody);
+    card.appendChild(cardFooter);
+
+    col.appendChild(card);
+    row.appendChild(col);
+  });
+
+  container.appendChild(row);
+
+  const mainElement = document.querySelector('main');
+  mainElement.appendChild(container);
 }
