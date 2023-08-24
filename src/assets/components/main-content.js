@@ -1,6 +1,7 @@
 let startIndex = 0;
 const batchSize = 10;
 
+createMainSection();
 loadNews();
 
 async function loadNews() {
@@ -51,10 +52,26 @@ async function iterateThroughIds(jsonIds, startIndex, batchSize) {
     try {
       const batchResults = await processJsonBatch(batchIds);
       console.log('Risultati della batch:', batchResults);
+      createNewsCards(batchResults)
     } catch (error) {
       console.error(`Errore durante l'elaborazione della batch: ${error}`);
     }
   } else {
     console.log('Elaborazione completata.');
   }
+}
+
+//funzione per la creazione della sezione main
+function createMainSection() {
+  const mainElement = document.createElement('main');
+  mainElement.classList.add('bg-dark');
+
+  const titleElement = document.createElement('h2');
+  titleElement.textContent = 'Catching Up with the Tech World!';
+  titleElement.classList.add('h2', 'fw-bold', 'fst-italic', 'text-center', 'text-danger');
+
+  mainElement.appendChild(titleElement);
+
+  const header = document.querySelector('header');
+  document.body.insertBefore(mainElement, header.nextSibling);
 }

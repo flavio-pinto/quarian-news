@@ -4,3 +4,8 @@ body {
   font-weight: 400;
   font-family: 'Roboto Slab', serif;
 }
+
+main {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}

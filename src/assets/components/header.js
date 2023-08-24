@@ -72,4 +72,5 @@ navbar.appendChild(menuContainer);
 header.appendChild(navbar);
 
 // Append header to the document body
-document.body.appendChild(header);
+let script = document.querySelector("script");
+document.body.insertBefore(header, script);
