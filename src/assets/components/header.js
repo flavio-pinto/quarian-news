@@ -1,12 +1,12 @@
-// Create header element
+// Header
 const header = document.createElement('header');
 header.classList.add('bg-dark', 'p-2', 'border-bottom', 'border-white');
 
-// Create navbar container
+// Navbar
 const navbar = document.createElement('nav');
 navbar.classList.add('navbar', 'navbar-expand-lg', 'navbar-dark', 'container', 'fs-1');
 
-// Create navbar brand (site name)
+
 const brand = document.createElement('a');
 brand.classList.add('navbar-brand');
 brand.href = '#';
@@ -18,7 +18,7 @@ brand.appendChild(brandName);
 
 navbar.appendChild(brand);
 
-// Create navbar toggler (for responsive menu)
+// Navbar hamburger
 const toggler = document.createElement('button');
 toggler.classList.add('navbar-toggler');
 toggler.type = 'button';
@@ -30,12 +30,12 @@ toggler.setAttribute('aria-label', 'Toggle navigation');
 toggler.innerHTML = '<span class="navbar-toggler-icon"></span>';
 navbar.appendChild(toggler);
 
-// Create navbar menu container
+// Navbar menu container
 const menuContainer = document.createElement('div');
 menuContainer.classList.add('collapse', 'navbar-collapse');
 menuContainer.id = 'navbarNav';
 
-// Create navbar links (social icons)
+// Navbar social
 const socialLinks = [
   { icon: 'code-square', text: 'My Website', url: '#' },
   { icon: 'github', text: 'GitHub', url: '#' },
@@ -57,7 +57,6 @@ for (const link of socialLinks) {
   icon.classList.add('bi', `bi-${link.icon}`, 'me-2', 'me-lg-0', 'align-middle');
   anchor.appendChild(icon);
 
-  // Create text for hamburger menu
   const textSpan = document.createElement('span');
   textSpan.classList.add('d-lg-none', 'ms-2', 'fs-4', 'align-middle');
   textSpan.textContent = link.text;
@@ -71,6 +70,6 @@ menuContainer.appendChild(socialList);
 navbar.appendChild(menuContainer);
 header.appendChild(navbar);
 
-// Append header to the document body
+// Eseguo appen dell'header al body
 let script = document.querySelector("script");
 document.body.insertBefore(header, script);

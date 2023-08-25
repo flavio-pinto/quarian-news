@@ -64,7 +64,7 @@ async function iterateThroughIds(jsonIds, startIndex, batchSize) {
 //funzione per la creazione della sezione main
 function createMainSection() {
   const mainElement = document.createElement('main');
-  mainElement.classList.add('bg-dark');
+  mainElement.classList.add('bg-dark', 'px-2', 'px-sm-0');
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = 'Catching Up with the Tech World!';
