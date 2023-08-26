@@ -63,6 +63,8 @@ async function iterateThroughIds(jsonIds, startIndex, batchSize) {
       console.error(`Errore durante l'elaborazione della batch: ${error}`);
     }
   } else {
+    /* const loadMoreButton = document.querySelector('.load-more-btn');
+    loadMoreButton.remove(); */
     console.log('Elaborazione completata.');
   }
 }
@@ -157,7 +159,12 @@ function loadMoreButton() {
   loadMoreButton.textContent = 'Load More';
   loadMoreButton.addEventListener('click', () => {
     startIndex += batchSize;
+    if(startIndex >= 490) {
+      loadMoreButtonContainer.remove();
+    }
     loadNews();
+    console.log(startIndex)
+    
   });
 
   loadMoreButtonContainer.appendChild(loadMoreButton); 
