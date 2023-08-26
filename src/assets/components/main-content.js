@@ -122,6 +122,7 @@ function createNewsCards(newsArray) {
 
     const cardLink = document.createElement('a');
     cardLink.classList.add('btn', 'btn-danger');
+    cardLink.target = "_blank";
     cardLink.href = news.url;
     cardLink.textContent = 'Read more';
 

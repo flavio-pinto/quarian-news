@@ -38,7 +38,7 @@ menuContainer.id = 'navbarNav';
 // Navbar social
 const socialLinks = [
   { icon: 'code-square', text: 'My Website', url: '#' },
-  { icon: 'github', text: 'GitHub', url: '#' },
+  { icon: 'github', text: 'GitHub', url: 'https://github.com/flavio-pinto' },
   { icon: 'linkedin', text: 'LinkedIn', url: '#' }
 ];
 
