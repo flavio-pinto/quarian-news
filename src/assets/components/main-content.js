@@ -154,20 +154,47 @@ function createNewsCards(newsArray) {
 function loadMoreButton() {
   const loadMoreButtonContainer = document.createElement('div');
   loadMoreButtonContainer.classList.add('load-more-btn', 'd-block', 'text-center', 'my-5');
+
   const loadMoreButton = document.createElement('button');
   loadMoreButton.classList.add('btn', 'btn-lg', 'btn-danger', 'rounded-start', 'rounded-end');
   loadMoreButton.textContent = 'Load More';
-  loadMoreButton.addEventListener('click', () => {
+  
+  loadMoreButtonContainer.appendChild(loadMoreButton);
+
+  //spinner
+  const spinnerContainer = document.createElement('div');
+  spinnerContainer.classList.add('d-none'); 
+  const spinner = document.createElement('div');
+  spinner.classList.add('spinner-border', 'text-light');
+  spinner.setAttribute('role', 'status');
+  spinnerContainer.appendChild(spinner);
+
+  
+  
+  loadMoreButton.addEventListener('click', async () => {
+    loadMoreButton.appendChild(spinnerContainer);
+    const buttonTextNode = loadMoreButton.childNodes[0];
+    loadMoreButton.removeChild(buttonTextNode);
+    loadMoreButton.disabled = true; 
+    spinnerContainer.classList.remove('d-none'); 
+    spinnerContainer.style.display = 'inline-block'; 
+
     startIndex += batchSize;
-    if(startIndex >= 490) {
+    if (startIndex >= 490) {
       loadMoreButtonContainer.remove();
     }
-    loadNews();
-    console.log(startIndex)
-    
-  });
 
-  loadMoreButtonContainer.appendChild(loadMoreButton); 
+    try {
+      await loadNews();
+      console.log('porco iddio')
+    } finally {
+      spinnerContainer.style.display = 'none'; 
+      loadMoreButton.disabled = false;
+      loadMoreButton.textContent = 'Load More';
+    }
+
+    console.log(startIndex);
+  });
 
   const main = document.querySelector('main');
   main.appendChild(loadMoreButtonContainer);
