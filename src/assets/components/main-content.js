@@ -1,13 +1,19 @@
 let startIndex = 0;
 const batchSize = 10;
+let firstLoad = true;
 
 createMainSection();
 loadNews();
 
+//Funzione per eseguire il caricamento delle notizie sulla pagina
 async function loadNews() {
   try {
     const jsonIds = await fetchNewsIds();
     await iterateThroughIds(jsonIds, startIndex, batchSize);
+    if(firstLoad) {
+      loadMoreButton()
+    }
+    firstLoad = false;
   } catch (error) {
     console.error(`Errore durante l'esecuzione principale: ${error}`);
   }
@@ -134,5 +140,28 @@ function createNewsCards(newsArray) {
   container.appendChild(row);
 
   const mainElement = document.querySelector('main');
-  mainElement.appendChild(container);
+  if(firstLoad) {
+    mainElement.appendChild(container);
+  } else {
+    const button = document.querySelector('.load-more-btn');
+    mainElement.insertBefore(container, button);
+  }
+}
+
+//Funzione per creare il pulsante "load more"
+function loadMoreButton() {
+  const loadMoreButtonContainer = document.createElement('div');
+  loadMoreButtonContainer.classList.add('load-more-btn', 'd-block', 'text-center', 'my-5');
+  const loadMoreButton = document.createElement('button');
+  loadMoreButton.classList.add('btn', 'btn-lg', 'btn-danger', 'rounded-start', 'rounded-end');
+  loadMoreButton.textContent = 'Load More';
+  loadMoreButton.addEventListener('click', () => {
+    startIndex += batchSize;
+    loadNews();
+  });
+
+  loadMoreButtonContainer.appendChild(loadMoreButton); 
+
+  const main = document.querySelector('main');
+  main.appendChild(loadMoreButtonContainer);
 }
