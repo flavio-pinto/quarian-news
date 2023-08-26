@@ -157,7 +157,7 @@ function loadMoreButton() {
 
   const loadMoreButton = document.createElement('button');
   loadMoreButton.classList.add('btn', 'btn-lg', 'btn-danger', 'rounded-start', 'rounded-end');
-  loadMoreButton.textContent = 'Load More';
+  loadMoreButton.textContent = 'Load more...';
   
   loadMoreButtonContainer.appendChild(loadMoreButton);
 
@@ -170,7 +170,7 @@ function loadMoreButton() {
   spinnerContainer.appendChild(spinner);
 
   
-  
+  //event listener
   loadMoreButton.addEventListener('click', async () => {
     loadMoreButton.appendChild(spinnerContainer);
     const buttonTextNode = loadMoreButton.childNodes[0];
@@ -190,7 +190,7 @@ function loadMoreButton() {
     } finally {
       spinnerContainer.style.display = 'none'; 
       loadMoreButton.disabled = false;
-      loadMoreButton.textContent = 'Load More';
+      loadMoreButton.textContent = 'Load more...';
     }
 
     console.log(startIndex);
