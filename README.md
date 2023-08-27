@@ -22,10 +22,6 @@ Sito web ottiene notizie sul mondo della tecnologia dall'API [Hackernews](https:
 ### Desktop
 ![Screenshot Desktop](src/assets/images/desktop-screen-1.png)
 
-
-
-![Screenshot Desktop](src/assets/images/desktop-screen-2.png)
-
 ### Tablet
 ![Screenshot Tablet](src/assets/images/tablet-screen.png)
 
