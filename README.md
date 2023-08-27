@@ -3,11 +3,13 @@
 Sito web ottiene notizie sul mondo della tecnologia dall'API [Hackernews](https://github.com/HackerNews/API), che permette di ottenere notizie sul mondo della tecnologia.
 
 ## Tecnologie utilizzate
-- HTML5 ![](src/assets/images/html-icon.png)
-- CSS3  ![](src/assets/images/css-icon.png)
-- Bootstrap 5 ![](src/assets/images/bootstrap-icon.png)
-- JavaScript ![](src/assets/images/javascript-icon.png)
-- Webpack ![](src/assets/images/webpack-icon.png)
+<ul style="list-style-type: none; padding-left: 0;">
+    <li>HTML5 <img src="src/assets/images/html-icon.png" alt="HTML5" height="20" style="vertical-align: middle; margin-left: 5px;"/></li>
+    <li>CSS3 <img src="src/assets/images/css-icon.png" alt="CSS3" height="20" style="vertical-align: middle; margin-left: 5px;"/></li>
+    <li>Bootstrap 5 <img src="src/assets/images/bootstrap-icon.png" alt="Bootstrap 5" height="20" style="vertical-align: middle; margin-left: 5px;"/></li>
+    <li>JavaScript <img src="src/assets/images/javascript-icon.png" alt="JavaScript" height="20" style="vertical-align: middle; margin-left: 5px;"/></li>
+    <li>Webpack <img src="src/assets/images/webpack-icon.png" alt="Webpack" height="20" style="vertical-align: middle; margin-left: 5px;"/></li>
+</ul>
 
 ## Features
 - **Chiamate API**: all'avvio viene effettuata una chiamata API per ottenere un elenco di 500 notizie;
