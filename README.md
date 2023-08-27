@@ -19,11 +19,15 @@ Sito web ottiene notizie sul mondo della tecnologia dall'API [Hackernews](https:
 - **Pulsanti autoscroll**: per poter tornare su e giù rapidamente;
 
 ## Screenshots
-### Desktop/Tablet
-![Screenshot Desktop/Tablet](url_del_tuo_screenshot_desktop_tablet)
+### Desktop
+![Screenshot Desktop](src/assets/images/desktop-screen-1.png)
+![Screenshot Desktop](src/assets/images/desktop-screen-2.png)
+
+### Tablet
+![Screenshot Tablet](src/assets/images/tablet-screen.png)
 
 ### Mobile
-![Screenshot Mobile](url_del_tuo_screenshot_mobile)
+![Screenshot Mobile](src/assets/images/mobile-screen.png)
 
 ## Contatti
 Lorem ipsum

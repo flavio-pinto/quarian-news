@@ -1,4 +1,4 @@
-let startIndex = 480;
+let startIndex = 0;
 const batchSize = 10;
 let firstLoad = true;
 
