@@ -9,3 +9,22 @@ main {
   padding-top: 120px;
   padding-bottom: 120px;
 }
+
+#scroll-buttons {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 1000;
+  opacity: .6;
+}
+
+#scroll-buttons .btn {
+  height: 70px;
+  width: 70px; 
+}
+
+@media (max-width: 576px) {
+  #scroll-buttons {
+    opacity: .2;
+  }
+}

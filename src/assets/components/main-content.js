@@ -3,6 +3,7 @@ const batchSize = 10;
 let firstLoad = true;
 
 createMainSection();
+createScrollButtons();
 loadNews();
 
 //Funzione per eseguire il caricamento delle notizie sulla pagina
@@ -57,14 +58,11 @@ async function iterateThroughIds(jsonIds, startIndex, batchSize) {
   if (batchIds.length > 0) {
     try {
       const batchResults = await processJsonBatch(batchIds);
-      console.log('Risultati della batch:', batchResults);
       createNewsCards(batchResults)
     } catch (error) {
       console.error(`Errore durante l'elaborazione della batch: ${error}`);
     }
   } else {
-    /* const loadMoreButton = document.querySelector('.load-more-btn');
-    loadMoreButton.remove(); */
     console.log('Elaborazione completata.');
   }
 }
@@ -187,16 +185,46 @@ function loadMoreButton() {
 
     try {
       await loadNews();
-      console.log('porco iddio')
     } finally {
       spinnerContainer.style.display = 'none'; 
       loadMoreButton.disabled = false;
       loadMoreButton.textContent = 'Load more...';
     }
-
-    console.log(startIndex);
   });
 
   const main = document.querySelector('main');
   main.appendChild(loadMoreButtonContainer);
+}
+
+function createScrollButtons() {
+  const scrollButtonsContainer = document.createElement('div');
+  scrollButtonsContainer.id = 'scroll-buttons';
+  scrollButtonsContainer.classList.add('d-flex', 'flex-column', 'gap-2', 'p-3');
+
+  const scrollToTopButton = document.createElement('button');
+  scrollToTopButton.classList.add('btn', 'bg-white', 'btn-lg', 'border', 'border-danger', 'd-flex', 'justify-content-center', 'align-items-center', 'fs-2');
+  
+  const scrollToTopIcon = document.createElement('i');
+  scrollToTopIcon.classList.add('bi', 'bi-arrow-up');
+  scrollToTopButton.appendChild(scrollToTopIcon);
+
+  const scrollToBottomButton = document.createElement('button');
+  scrollToBottomButton.classList.add('btn', 'bg-white', 'btn-lg', 'border', 'border-danger', 'd-flex', 'justify-content-center', 'align-items-center', 'fs-2');
+
+  const scrollToBottomIcon = document.createElement('i');
+  scrollToBottomIcon.classList.add('bi', 'bi-arrow-down');
+  scrollToBottomButton.appendChild(scrollToBottomIcon);
+
+  scrollButtonsContainer.appendChild(scrollToTopButton);
+  scrollButtonsContainer.appendChild(scrollToBottomButton);
+
+  document.body.appendChild(scrollButtonsContainer);
+
+  scrollToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  scrollToBottomButton.addEventListener('click', () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  });
 }
