@@ -1,4 +1,4 @@
-let startIndex = 0;
+let startIndex = 480;
 const batchSize = 10;
 let firstLoad = true;
 
@@ -16,7 +16,9 @@ async function loadNews() {
     }
     firstLoad = false;
   } catch (error) {
-    console.error(`Errore durante l'esecuzione principale: ${error}`);
+    const errorMessage = `Errore durante l'esecuzione principale: ${error}`;
+    console.error(errorMessage);
+    createAlert(errorMessage, 'danger');
   }
 }
 
@@ -60,10 +62,14 @@ async function iterateThroughIds(jsonIds, startIndex, batchSize) {
       const batchResults = await processJsonBatch(batchIds);
       createNewsCards(batchResults)
     } catch (error) {
-      console.error(`Errore durante l'elaborazione della batch: ${error}`);
+      const errorMessage = `Errore durante l'elaborazione della batch: ${error}`;
+      console.error(errorMessage);
+      createAlert(errorMessage, 'danger');
     }
   } else {
+    const completionMessage = 'You have viewed all the news. To read new ones, please refresh the page!';
     console.log('Elaborazione completata.');
+    createAlert(completionMessage, 'warning');
   }
 }
 
@@ -179,9 +185,7 @@ function loadMoreButton() {
     spinnerContainer.style.display = 'inline-block'; 
 
     startIndex += batchSize;
-    if (startIndex >= 490) {
-      loadMoreButtonContainer.remove();
-    }
+    
 
     try {
       await loadNews();
@@ -189,6 +193,13 @@ function loadMoreButton() {
       spinnerContainer.style.display = 'none'; 
       loadMoreButton.disabled = false;
       loadMoreButton.textContent = 'Load more...';
+    }
+
+    if (startIndex >= 490) {
+      loadMoreButtonContainer.remove();
+      const completionMessage = 'You have viewed all the news. To read new ones, please refresh the page!';
+      console.log('Elaborazione completata.');
+      createAlert(completionMessage, 'warning');
     }
   });
 
@@ -227,4 +238,15 @@ function createScrollButtons() {
   scrollToBottomButton.addEventListener('click', () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   });
+}
+
+// funzione per creare gli alert
+function createAlert(message, color) {
+  const alertContainer = document.createElement('div');
+  alertContainer.classList.add('container', 'text-center', 'alert', `alert-${color}`, 'mt-3', 'mb-0');
+  alertContainer.setAttribute('role', 'alert');
+  alertContainer.textContent = message;
+
+  const mainElement = document.querySelector('main');
+  mainElement.appendChild(alertContainer);
 }
