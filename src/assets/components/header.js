@@ -13,8 +13,14 @@ brand.href = '#';
 
 const brandName = document.createElement('h1');
 brandName.classList.add('h2', 'm-0', 'fs-1', 'fw-bold');
-brandName.textContent = 'Quarian.news';
+brandName.textContent = 'Quarian';
 brand.appendChild(brandName);
+
+const newsSpan = document.createElement('span');
+newsSpan.classList.add('news', 'text-danger');
+newsSpan.textContent = '.news';
+
+brandName.appendChild(newsSpan);
 
 navbar.appendChild(brand);
 
