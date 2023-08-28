@@ -2,6 +2,8 @@
 
 Sito web ottiene notizie sul mondo della tecnologia dall'API [Hackernews](https://github.com/HackerNews/API), che permette di ottenere notizie sul mondo della tecnologia.
 
+Live demo hosted on Netlify: https://quarian-news.netlify.app/
+
 ## Tecnologie utilizzate
 <ul style="list-style-type: none; padding-left: 0;">
     <li>HTML5 <img src="src/assets/images/html-icon.png" alt="HTML5" height="20" style="vertical-align: middle; margin-left: 5px;"/></li>
@@ -29,4 +31,5 @@ Sito web ottiene notizie sul mondo della tecnologia dall'API [Hackernews](https:
 ![Screenshot Mobile](src/assets/images/mobile-screen.png)
 
 ## Contatti
-Lorem ipsum
+Linkedin https://www.linkedin.com/in/flaviopinto-dev/
+Email: flaviopinto351@gmail.com
