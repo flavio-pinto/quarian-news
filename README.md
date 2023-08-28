@@ -21,8 +21,12 @@ Live demo hosted on Netlify: https://quarian-news.netlify.app/
 - **Pulsanti autoscroll**: per poter tornare su e giù rapidamente;
 
 ## Screenshots
+### Video
+![Screenshot Desktop](src/assets/images/desktop-animate.gif)
+
+## Screenshots
 ### Desktop
-![Screenshot Desktop](src/assets/images/desktop-screen-1.png)
+![Screenshot Desktop](src/assets/images/desktop-screen.png)
 
 ### Tablet
 ![Screenshot Tablet](src/assets/images/tablet-screen.png)
