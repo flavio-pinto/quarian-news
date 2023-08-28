@@ -118,11 +118,11 @@ function createNewsCards(newsArray) {
 
     const cardAuthor = document.createElement('p');
     cardAuthor.classList.add('m-0');
-    cardAuthor.textContent = `Autore: ${news.by}`;
+    cardAuthor.textContent = `Author: ${news.by}`;
 
-    const cardDate = document.createElement('p');
+    const cardDate = document.createElement('small');
     cardDate.classList.add('m-0');
-    cardDate.textContent = `Data: ${news.time}`;
+    cardDate.textContent = convertTimestamp(news.time);
 
     const cardLink = document.createElement('a');
     cardLink.classList.add('btn', 'btn-danger');
@@ -250,3 +250,19 @@ function createAlert(message, color) {
   const mainElement = document.querySelector('main');
   mainElement.appendChild(alertContainer);
 }
+
+//funzione per convertire il timestamp UNIX in un formato tradizionale
+function convertTimestamp(timestamp) {
+  const date = new Date(timestamp * 1000); 
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+  console.log(month)
+  const day = date.getDate().toString().padStart(2, '0');
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+
+  const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  return formattedDate;
+}
+
